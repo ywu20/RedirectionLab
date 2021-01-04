@@ -32,8 +32,22 @@ public class PigLatin{
     return out;
   }
 
+public static String pigLatinBest(String s){
+  String out="";
+  if(! Character.isLetter(s.charAt(0))){
+    out=s;
+  }
+  else if (! Character.isLetter(s.charAt(s.length()-1))){
+    out=pigLatin(s.substring(0,s.length()-1))+s.charAt(s.length()-1);
+  }
+  else{
+    out=pigLatin(s);
+  }
+  return out;
+}
   public static void main(String[] args){
     //System.out.println(pigLatinSimple(args[0]));
-    System.out.println(pigLatin(args[0]));
+    //System.out.println(pigLatin(args[0]));
+    System.out.println(pigLatinBest(args[0]));
   }
 }
