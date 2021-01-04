@@ -1,9 +1,8 @@
 import java.util.*;
 public class PigLatin{
-  public static boolean isAlpha(char c){
-    char[] alpha = {'a','e','i','o','u'};
-    for(int i=0;i<alpha.length;i++){
-      if(c==alpha[i]){
+  public static boolean isSpecial(String c, String[] arr){
+    for(int i=0;i<arr.length;i++){
+      if(c.equals(arr[i])){
         return true;
       }
     }
@@ -11,7 +10,8 @@ public class PigLatin{
   }
   public static String pigLatinSimple(String s){
     String out="";
-    if(isAlpha(s.charAt(0))){
+    String[] alpha = {"a","e","i","o","u"};
+    if(isSpecial(s.substring(0,1),alpha)){
       out=s+"hay";
     }
     else{
@@ -20,7 +20,20 @@ public class PigLatin{
     return out;
   }
 
+  public static String pigLatin(String s){
+    String[] digraph= {"bl", "br", "ch", "ck", "cl", "cr", "dr", "fl", "fr", "gh", "gl", "gr", "ng", "ph", "pl", "pr", "qu", "sc", "sh", "sk", "sl", "sm", "sn", "sp", "st", "sw", "th", "tr", "tw", "wh", "wr"};
+    String out="";
+    if(isSpecial(s.substring(0,2),digraph)){
+      out=s.substring(2,s.length())+s.substring(0,2)+"ay";
+    }
+    else{
+      out=pigLatinSimple(s);
+    }
+    return out;
+  }
+
   public static void main(String[] args){
-    pigLatinSimple(args[0]);
+    //System.out.println(pigLatinSimple(args[0]));
+    System.out.println(pigLatin(args[0]));
   }
 }
