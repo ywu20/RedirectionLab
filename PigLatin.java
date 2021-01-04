@@ -10,10 +10,14 @@ public class PigLatin{
     return false;
   }
   public static String pigLatinSimple(String s){
+    String out="";
     if(isAlpha(s.charAt(0))){
-      System.out.println("true");
+      out=s+"hay";
     }
-    return "hi";
+    else{
+      out=s.substring(1,s.length())+s.charAt(0)+"ay";
+    }
+    return out;
   }
 
   public static void main(String[] args){
